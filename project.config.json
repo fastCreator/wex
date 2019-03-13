@@ -1,0 +1,21 @@
+{
+	"miniprogramRoot": "dist/",
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"nodeModules": true,
+		"autoAudits": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.6.0",
+	"appid": "wx6883d65f70fecd8a",
+	"projectname": "wex-demo",
+	"condition": {}
+}

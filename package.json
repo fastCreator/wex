@@ -1,0 +1,22 @@
+{
+  "name": "wepy",
+  "version": "1.1.8",
+  "description": "",
+  "scripts": {
+    "test": "gulp -f ./build/gulpfile.js --series test",
+    "dev": "gulp -f ./build/gulpfile.js --series dev"
+  },
+  "devDependencies": {
+    "chalk": "^2.4.2",
+    "fs-extra": "^7.0.1",
+    "gulp": "^4.0.0",
+    "less": "^3.9.0",
+    "node-sass": "^4.11.0",
+    "postcss": "^7.0.14",
+    "postcss-selector-parser": "^6.0.0",
+    "recast": "^0.17.3",
+    "through2": "^3.0.1",
+    "vue-template-compiler": "^2.6.7"
+  },
+  "dependencies": {}
+}

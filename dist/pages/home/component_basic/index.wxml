@@ -1,0 +1,19 @@
+
+<view>
+  <view>
+    <input data-model-key="a" bindinput="_modelInput" value="{{a}}"></input>
+    <text>+</text>
+    <input data-model-key="b" bindinput="_modelInput" value="{{b}}"></input>
+    {{c}}
+  </view>
+  <view click="a"></view>
+  <view wx:if="{{length > 5}}">1</view>
+  <view wx:for="{{array}}">
+    {{index}}: {{item.message}}
+  </view>
+  <view wx:for="{{array}}" wx:for-index="idx" wx:for-item="itemName">
+    {{idx}}: {{itemName.message}}
+  </view>
+  <view>{{ message }}</view>
+  <view>{{ message + 1 }}</view>
+</view>
