@@ -1,19 +1,37 @@
 
 <view>
   <view>
+    <text>v-model</text>
     <input data-model-key="a" bindinput="_modelInput" value="{{a}}"></input>
     <text>+</text>
     <input data-model-key="b" bindinput="_modelInput" value="{{b}}"></input>
-    {{c}}
+    <text>计算属性{{c}}</text>
   </view>
-  <view click="a"></view>
-  <view wx:if="{{length > 5}}">1</view>
-  <view wx:for="{{array}}">
-    {{index}}: {{item.message}}
+  <view>
+    <text>表达式</text>
   </view>
-  <view wx:for="{{array}}" wx:for-index="idx" wx:for-item="itemName">
-    {{idx}}: {{itemName.message}}
+  <view>
+    <text>事件处理</text>
+    <view bind:tap="a" ><text>内层</text>click</view>
+    <view bind:tap="_eventEmit" data-wex-modefystap="once" data-wex-Methodtap="a" data-wex-id="6"><text>内层</text>click.once</view>
+    <view bind:tap="_eventEmit" data-wex-modefystap="self" data-wex-Methodtap="a" data-wex-id="7"><text>内层</text>click.self</view>
+    <view capture-catch:tap="a" ><text>内层</text>click.capture.stop</view>
+    <view catch:tap="_eventEmit" data-wex-modefystap="once" data-wex-Methodtap="a" data-wex-id="8"><text>内层</text>click.capture.once</view>
+    <view catch:tap="a" ><text>内层</text>click.capture</view>
   </view>
-  <view>{{ message }}</view>
-  <view>{{ message + 1 }}</view>
+  <view>
+    <text>ifElse</text>
+    <view wx:if="{{true}}">v-if</view>
+    <view wx:elif="{{true}}">v-else-if</view>
+    <view wx:else>v-else</view>
+  </view>
+  <view>
+    <text>showHidden</text>
+    <view hidden="{{!true}}">v-show</view>
+    <view hidden="{{false}}">v-hidden</view>
+  </view>
+  <view>
+    <text>循环</text>
+    <view wx:for="{{list}}" wx:for-index="i" wx:for-item="it" wx:key="{{i}}">{{it}}-{{i}}</view>
+  </view>
 </view>

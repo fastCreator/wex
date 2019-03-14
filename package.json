@@ -3,7 +3,7 @@
   "version": "1.1.8",
   "description": "",
   "scripts": {
-    "test": "gulp -f ./build/gulpfile.js --series test",
+    "test": "node test",
     "dev": "gulp -f ./build/gulpfile.js --series dev"
   },
   "devDependencies": {
