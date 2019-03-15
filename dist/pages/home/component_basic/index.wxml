@@ -20,10 +20,10 @@
   <view class="wrap">
     <view class="title">事件处理</view>
     <view bind:tap="a" ><text>内层</text>click</view>
-    <view bind:tap="_eventEmit" data-wex-modefystap="once" data-wex-Methodtap="a" data-wex-id="336"><text>内层</text>click.once</view>
-    <view bind:tap="_eventEmit" data-wex-modefystap="self" data-wex-Methodtap="a" data-wex-id="337"><text>内层</text>click.self</view>
+    <view bind:tap="_eventEmit" data-wex-modefystap="once" data-wex-Methodtap="a" data-wex-id="366"><text>内层</text>click.once</view>
+    <view bind:tap="_eventEmit" data-wex-modefystap="self" data-wex-Methodtap="a" data-wex-id="367"><text>内层</text>click.self</view>
     <view capture-catch:tap="a" ><text>内层</text>click.capture.stop</view>
-    <view catch:tap="_eventEmit" data-wex-modefystap="once" data-wex-Methodtap="a" data-wex-id="338"><text>内层</text>click.capture.once</view>
+    <view catch:tap="_eventEmit" data-wex-modefystap="once" data-wex-Methodtap="a" data-wex-id="368"><text>内层</text>click.capture.once</view>
     <view catch:tap="a" ><text>内层</text>click.capture</view>
   </view>
   <view class="wrap">
@@ -46,7 +46,7 @@
     </view>
   </view>
   <view class="wrap">
-    <view class="title">监听变化</view>
+    <view class="title">监听变化,优化监听赋值死循环问题</view>
     <input data-model-key="watch" bindinput="_modelInput" value="{{watch}}" ></input>{{watch}}
   </view>
 </view>

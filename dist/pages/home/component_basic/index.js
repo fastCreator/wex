@@ -13,6 +13,7 @@ Component({
 
   observers: {
     "watch":function(v) {
+      this.data.watch = 123
       console.log(`监听到变化:${v}`);
     }
   },

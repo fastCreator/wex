@@ -66,7 +66,7 @@ input {
       </view>
     </view>
     <view class="wrap">
-      <view class="title">监听变化</view>
+      <view class="title">监听变化,优化监听赋值死循环问题</view>
       <input v-model="watch" />{{watch}}
     </view>
   </view>
@@ -83,6 +83,7 @@ export default {
   },
   observers: {
     "watch":function(v) {
+      this.data.watch = 123
       console.log(`监听到变化:${v}`);
     }
   },
