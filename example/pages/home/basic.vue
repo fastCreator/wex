@@ -1,26 +1,41 @@
 <style>
-view {
-  border: 1px solid #fff;
+.wrap {
+  border: 1px solid #eee;
+  margin: 20rpx;
+  padding: 20rpx;
+}
+.title {
+  font-size: 50rpx;
+}
+input {
+  display: inline-block;
+  width: 200rpx;
+  border: 1px solid #dcdfe6;
+  border-radius: 10rpx;
+  margin-top: 20rpx;
 }
 </style>
 <template>
   <view>
-    <view>1111</view>
-    <view>
-      <text>v-model</text>
+    <view class="wrap">
+      <view class="title">v-model</view>
       <input v-model="a" />
-      <input v-model="obj.a" />
-      <text>输入值{{obj.a}}</text>
-      <text>计算属性{{x}}</text>
       <text>+</text>
-      <input v-model="b" />
-      <text>计算属性{{c}}</text>
+      <input v-model="obj.a" />
+      <text>=</text>
+      <text>{{a+obj.a}}</text>
     </view>
-    <view>
-      <text>表达式</text>
+    <view class="wrap">
+      <view class="title">计算属性</view>
+      <view>a + 1 = {{c1}}</view>
+      <view>obj.a + 1 = {{c2}}</view>
     </view>
-    <view>
-      <text>事件处理</text>
+    <view class="wrap">
+      <view class="title">注释</view>
+      <!-- <text>表达式</text> -->
+    </view>
+    <view class="wrap">
+      <view class="title">事件处理</view>
       <view @click="a"><text>内层</text>click</view>
       <view @click.once="a"><text>内层</text>click.once</view>
       <view @click.self="a"><text>内层</text>click.self</view>
@@ -28,19 +43,19 @@ view {
       <view @click.capture.once="a"><text>内层</text>click.capture.once</view>
       <view @click.capture="a"><text>内层</text>click.capture</view>
     </view>
-    <view>
-      <text>ifElse</text>
+    <view class="wrap">
+      <view class="title">ifElse</view>
       <view v-if="true">v-if</view>
       <view v-else-if="true">v-else-if</view>
       <view v-else>v-else</view>
     </view>
-    <view>
-      <text>showHidden</text>
+    <view class="wrap">
+      <view class="title">showHidden</view>
       <view v-show="true">v-show</view>
       <view v-hidden="false">v-hidden</view>
     </view>
-    <view>
-      <text>循环</text>
+    <view class="wrap">
+      <view class="title">循环</view>
       <view
         v-for="(it,i) in list"
         :key="i"
@@ -50,11 +65,9 @@ view {
         <input v-model="it" />
       </view>
     </view>
-    <view>
-      <view>observer</view>
-      <view>{{obj.a}}</view>
-      <view>{{count}}</view>
-      <view>{{obj.count}}</view>
+    <view class="wrap">
+      <view class="title">监听变化</view>
+      <input v-model="watch" />{{watch}}
     </view>
   </view>
 </template>
@@ -65,17 +78,24 @@ export default {
     b: 0,
     list: ["一", "二", "三"],
     count: 111111111,
-    obj: { count: 1, a: 333 }
+    obj: { count: 1, a: 333 },
+    watch: 123
+  },
+  observers: {
+    "watch":function(v) {
+      console.log(`监听到变化:${v}`);
+    }
   },
   lifetimes: {
     created() {
+      console.log(this)
       setTimeout(() => {
-        console.log("------------------");
-        this.data.list[1] = 2;
-        console.log(this);
-        this.data.obj = { a: 11111 };
-        this.data.obj.a = 222222222;
-        this.data.a = 3;
+        // console.log("------------------");
+        // this.data.list[1] = 2;
+        // console.log(this);
+        // this.data.obj = { a: 11111 };
+        // this.data.obj.a = 222222222;
+        // this.data.a = 3;
       }, 1000);
       console.log(this.data);
     }
@@ -87,11 +107,11 @@ export default {
   },
   watch: {},
   computed: {
-    c() {
-      return this.data.a + this.data.b;
+    c1() {
+      return this.data.a + 1;
     },
-    x() {
-      return this.data.a + this.data.obj.a;
+    c2() {
+      return this.data.obj.a + 1;
     }
   },
   pageEvents: {

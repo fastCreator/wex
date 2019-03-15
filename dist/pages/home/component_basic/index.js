@@ -7,18 +7,26 @@ Component({
     b: 0,
     list: ["一", "二", "三"],
     count: 111111111,
-    obj: { count: 1, a: 333 }
+    obj: { count: 1, a: 333 },
+    watch: 123
+  },
+
+  observers: {
+    "watch":function(v) {
+      console.log(`监听到变化:${v}`);
+    }
   },
 
   lifetimes: {
     created() {
+      console.log(this)
       setTimeout(() => {
-        console.log("------------------");
-        this.data.list[1] = 2;
-        console.log(this);
-        this.data.obj = { a: 11111 };
-        this.data.obj.a = 222222222;
-        this.data.a = 3;
+        // console.log("------------------");
+        // this.data.list[1] = 2;
+        // console.log(this);
+        // this.data.obj = { a: 11111 };
+        // this.data.obj.a = 222222222;
+        // this.data.a = 3;
       }, 1000);
       console.log(this.data);
     }
@@ -71,11 +79,11 @@ Component({
   watch: {},
 
   computed: {
-    c() {
-      return this.data.a + this.data.b;
+    c1() {
+      return this.data.a + 1;
     },
-    x() {
-      return this.data.a + this.data.obj.a;
+    c2() {
+      return this.data.obj.a + 1;
     }
   },
 

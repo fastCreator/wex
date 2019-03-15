@@ -1,2 +1,2 @@
-page {
-  background: #eee; }
+page view {
+  box-sizing: border-box; }

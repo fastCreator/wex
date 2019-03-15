@@ -14,7 +14,7 @@
 		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.6.0",
+	"libVersion": "2.6.2",
 	"appid": "wx6883d65f70fecd8a",
 	"projectname": "wex-demo",
 	"condition": {}
