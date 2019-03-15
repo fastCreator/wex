@@ -79,11 +79,5 @@ Component({
     }
   },
 
-  pageEvents: {
-    onPullDownRefresh() {
-      console.log(this.data.b);
-    }
-  },
-
   behaviors:[observerdBehavior]
 });
