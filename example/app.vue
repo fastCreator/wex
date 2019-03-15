@@ -21,8 +21,7 @@ export default {
     },
     "window": {
       "navigationBarBackgroundColor": "#39b54a",
-      "navigationBarTitleText": "wepy UI",
-      "navigationStyle": "custom",
+      "navigationBarTitleText": "wex",
       "navigationBarTextStyle": "white",
       "enablePullDownRefresh":true
     }

@@ -14,7 +14,8 @@ Component({
     created() {
       setTimeout(() => {
         console.log("------------------");
-
+        this.data.list[1] = 2;
+        console.log(this);
         this.data.obj = { a: 11111 };
         this.data.obj.a = 222222222;
         this.data.a = 3;
@@ -30,7 +31,16 @@ Component({
 
     _modelInput(e) {
       let o = this.data
-      let arr = e.currentTarget.dataset.modelKey.split('.')
+      let dataset = e.currentTarget.dataset
+      if(dataset.forIndexName){
+        let name = dataset.forIndexName
+        let value = dataset.forIndexValue
+        let item = dataset.forIndexItem
+        let list = dataset.forIndexList
+        dataset.modelKey = dataset.modelKey.replace(new RegExp('^'+item+'($|[\.\[])'),list+'['+value+']'+'$1')
+        dataset.modelKey = dataset.modelKey.replace(new RegExp('\\[\s*'+name+'\s*\\]'),'['+value+']')
+      }
+      let arr = dataset.modelKey.split('.')
       for(let i = 0;i<arr.length - 1;i++){
         o = o[arr[i]]
       }
@@ -65,7 +75,7 @@ Component({
       return this.data.a + this.data.b;
     },
     x() {
-      return this.data.a +this.data.obj.a;
+      return this.data.a + this.data.obj.a;
     }
   },
 

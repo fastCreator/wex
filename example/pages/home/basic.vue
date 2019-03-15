@@ -44,7 +44,11 @@ view {
       <view
         v-for="(it,i) in list"
         :key="i"
-      >{{it}}-{{i}}</view>
+      >
+        {{it}}-{{i}}
+        <input v-model="list[i]" />
+        <input v-model="it" />
+      </view>
     </view>
     <view>
       <view>observer</view>
@@ -67,7 +71,8 @@ export default {
     created() {
       setTimeout(() => {
         console.log("------------------");
-
+        this.data.list[1] = 2;
+        console.log(this);
         this.data.obj = { a: 11111 };
         this.data.obj.a = 222222222;
         this.data.a = 3;
@@ -86,7 +91,7 @@ export default {
       return this.data.a + this.data.b;
     },
     x() {
-      return this.data.a +this.data.obj.a;
+      return this.data.a + this.data.obj.a;
     }
   },
   pageEvents: {

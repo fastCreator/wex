@@ -3,12 +3,12 @@
   <view>1111</view>
   <view>
     <text>v-model</text>
-    <input data-model-key="a" bindinput="_modelInput" value="{{a}}"></input>
-    <input data-model-key="obj.a" bindinput="_modelInput" value="{{obj.a}}"></input>
+    <input data-model-key="a" bindinput="_modelInput" value="{{a}}" ></input>
+    <input data-model-key="obj.a" bindinput="_modelInput" value="{{obj.a}}" ></input>
     <text>输入值{{obj.a}}</text>
     <text>计算属性{{x}}</text>
     <text>+</text>
-    <input data-model-key="b" bindinput="_modelInput" value="{{b}}"></input>
+    <input data-model-key="b" bindinput="_modelInput" value="{{b}}" ></input>
     <text>计算属性{{c}}</text>
   </view>
   <view>
@@ -36,7 +36,11 @@
   </view>
   <view>
     <text>循环</text>
-    <view wx:for="{{list}}" wx:for-index="i" wx:for-item="it" wx:key="{{i}}">{{it}}-{{i}}</view>
+    <view wx:for="{{list}}" wx:for-index="i" wx:for-item="it" wx:key="{{i}}">
+      {{it}}-{{i}}
+      <input data-model-key="list[i]" bindinput="_modelInput" value="{{list[i]}}" data-for-index-name="i" data-for-index-value="{{i}}" data-for-index-item="it" data-for-index-list="list"></input>
+      <input data-model-key="it" bindinput="_modelInput" value="{{it}}" data-for-index-name="i" data-for-index-value="{{i}}" data-for-index-item="it" data-for-index-list="list"></input>
+    </view>
   </view>
   <view>
     <view>observer</view>
