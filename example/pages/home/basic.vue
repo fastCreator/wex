@@ -5,19 +5,13 @@ view {
 </style>
 <template>
   <view>
+    <view>1111</view>
     <view>
       <text>v-model</text>
-      <input
-        data-model-key="a"
-        bindinput="_modelInput"
-        value="{{a}}"
+      <input v-model="a"
       />
       <text>+</text>
-      <input
-        data-model-key="b"
-        bindinput="_modelInput"
-        value="{{b}}"
-      />
+      <input v-model="b"/>
       <text>计算属性{{c}}</text>
     </view>
     <view>
@@ -45,7 +39,15 @@ view {
     </view>
     <view>
       <text>循环</text>
-      <view v-for="(it,i) in list" :key="i">{{it}}-{{i}}</view>
+      <view
+        v-for="(it,i) in list"
+        :key="i"
+      >{{it}}-{{i}}</view>
+    </view>
+    <view>
+      <view>observer</view>
+      <view>{{count}}</view>
+      <view>{{obj.count}}</view>
     </view>
   </view>
 </template>
@@ -54,10 +56,20 @@ export default {
   data: {
     a: 1,
     b: 0,
-    list:['一','二','三']
+    list: ["一", "二", "三"],
+    count: 111111111,
+    obj: { count: 1 }
   },
   lifetimes: {
-    pullDown() {}
+    created() {
+      setTimeout(() => {
+        console.log('------------------')
+        this.data.count = 2222222
+        this.data.obj.count = 44444444444
+        // this.data.a = 3
+      }, 1000);
+      console.log(this.data);
+    }
   },
   methods: {
     a() {

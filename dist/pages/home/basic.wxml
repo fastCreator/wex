@@ -1,1 +1,1 @@
-<my-page id="myPage"></my-page>
+<my-page id="myPage" propp="123"></my-page>

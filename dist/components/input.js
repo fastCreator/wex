@@ -1,4 +1,5 @@
 
+const observerBehavior = require('../wexLib/observer.js')
 const computedBehavior = require('../wexLib/computed.js')
 
 Component({
@@ -11,5 +12,5 @@ Component({
   methods: {},
   watch: {},
   compoted: {},
-  behaviors:[computedBehavior]
+  behaviors:[computedBehavior, observerBehavior]
 });
