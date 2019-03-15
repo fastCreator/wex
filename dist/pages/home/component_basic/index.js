@@ -1,33 +1,25 @@
 
-const observerBehavior = require('../../../wexLib/observer.js')
-const computedBehavior = require('../../../wexLib/computed.js')
+const observerdBehavior = require('../../../wexLib/observer/index.js')
 
 Component({
-  properties:{
-    propp:{
-      type:Number
-    }
-  },
   data: {
     a: 1,
     b: 0,
     list: ["一", "二", "三"],
     count: 111111111,
-    obj: { count: 1 }
+    obj: { count: 1, a: 333 }
   },
 
   lifetimes: {
     created() {
-      console.log(this)
       setTimeout(() => {
-        console.log('------------------')
-        this.data.count = 2222222
-        console.log(this.data.count)
-        this.data.obj.count = 44444444444
-        this.setData({})
-        // this.data.a = 3
+        console.log("------------------");
+
+        this.data.obj = { a: 11111 };
+        this.data.obj.a = 222222222;
+        this.data.a = 3;
       }, 1000);
-      // console.log(this.data);
+      console.log(this.data);
     }
   },
 
@@ -37,9 +29,12 @@ Component({
     },
 
     _modelInput(e) {
-      let o = {}
-      o[e.currentTarget.dataset.modelKey] = e.detail.value
-      this.setData(o)
+      let o = this.data
+      let arr = e.currentTarget.dataset.modelKey.split('.')
+      for(let i = 0;i<arr.length - 1;i++){
+        o = o[arr[i]]
+      }
+      o[arr[arr.length-1]] = e.detail.value
     },
 
     _eventEmit(e,...arg) {
@@ -67,8 +62,10 @@ Component({
 
   computed: {
     c() {
-      console.log('computed')
       return this.data.a + this.data.b;
+    },
+    x() {
+      return this.data.a +this.data.obj.a;
     }
   },
 
@@ -78,5 +75,5 @@ Component({
     }
   },
 
-  behaviors:[computedBehavior]
+  behaviors:[observerdBehavior]
 });

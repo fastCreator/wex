@@ -3,9 +3,12 @@
   <view>1111</view>
   <view>
     <text>v-model</text>
-    <input data-model-key="a" bind:input="_modelInput" value="{{a}}"></input>
+    <input data-model-key="a" bindinput="_modelInput" value="{{a}}"></input>
+    <input data-model-key="obj.a" bindinput="_modelInput" value="{{obj.a}}"></input>
+    <text>输入值{{obj.a}}</text>
+    <text>计算属性{{x}}</text>
     <text>+</text>
-    <input data-model-key="b" bind:input="_modelInput" value="{{b}}"></input>
+    <input data-model-key="b" bindinput="_modelInput" value="{{b}}"></input>
     <text>计算属性{{c}}</text>
   </view>
   <view>
@@ -14,10 +17,10 @@
   <view>
     <text>事件处理</text>
     <view bind:tap="a" ><text>内层</text>click</view>
-    <view bind:tap="_eventEmit" data-wex-modefystap="once" data-wex-Methodtap="a" data-wex-id="3"><text>内层</text>click.once</view>
-    <view bind:tap="_eventEmit" data-wex-modefystap="self" data-wex-Methodtap="a" data-wex-id="4"><text>内层</text>click.self</view>
+    <view bind:tap="_eventEmit" data-wex-modefystap="once" data-wex-Methodtap="a" data-wex-id="0"><text>内层</text>click.once</view>
+    <view bind:tap="_eventEmit" data-wex-modefystap="self" data-wex-Methodtap="a" data-wex-id="1"><text>内层</text>click.self</view>
     <view capture-catch:tap="a" ><text>内层</text>click.capture.stop</view>
-    <view catch:tap="_eventEmit" data-wex-modefystap="once" data-wex-Methodtap="a" data-wex-id="5"><text>内层</text>click.capture.once</view>
+    <view catch:tap="_eventEmit" data-wex-modefystap="once" data-wex-Methodtap="a" data-wex-id="2"><text>内层</text>click.capture.once</view>
     <view catch:tap="a" ><text>内层</text>click.capture</view>
   </view>
   <view>
@@ -37,6 +40,7 @@
   </view>
   <view>
     <view>observer</view>
+    <view>{{obj.a}}</view>
     <view>{{count}}</view>
     <view>{{obj.count}}</view>
   </view>

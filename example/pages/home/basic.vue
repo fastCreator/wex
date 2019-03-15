@@ -8,10 +8,12 @@ view {
     <view>1111</view>
     <view>
       <text>v-model</text>
-      <input v-model="a"
-      />
+      <input v-model="a" />
+      <input v-model="obj.a" />
+      <text>输入值{{obj.a}}</text>
+      <text>计算属性{{x}}</text>
       <text>+</text>
-      <input v-model="b"/>
+      <input v-model="b" />
       <text>计算属性{{c}}</text>
     </view>
     <view>
@@ -46,6 +48,7 @@ view {
     </view>
     <view>
       <view>observer</view>
+      <view>{{obj.a}}</view>
       <view>{{count}}</view>
       <view>{{obj.count}}</view>
     </view>
@@ -58,15 +61,16 @@ export default {
     b: 0,
     list: ["一", "二", "三"],
     count: 111111111,
-    obj: { count: 1 }
+    obj: { count: 1, a: 333 }
   },
   lifetimes: {
     created() {
       setTimeout(() => {
-        console.log('------------------')
-        this.data.count = 2222222
-        this.data.obj.count = 44444444444
-        // this.data.a = 3
+        console.log("------------------");
+
+        this.data.obj = { a: 11111 };
+        this.data.obj.a = 222222222;
+        this.data.a = 3;
       }, 1000);
       console.log(this.data);
     }
@@ -80,6 +84,9 @@ export default {
   computed: {
     c() {
       return this.data.a + this.data.b;
+    },
+    x() {
+      return this.data.a +this.data.obj.a;
     }
   },
   pageEvents: {

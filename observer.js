@@ -12,7 +12,6 @@ function buildProxy(target,path){
       }
     },
     set(target, key, value, receiver){
-      console.log('key',path+key)
       return Reflect.set(target, key, value, receiver);
     }
   })

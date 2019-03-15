@@ -17,10 +17,12 @@ const dep = {
   depend(path){
     if(this.target){
       if(this.deps[path]){
-        this.deps.add(this.target)
+        this.deps[path].add(this.target)
       }else{
-        this.deps = new Set([this.target])
+        this.deps[path] = new Set([this.target])
       }
     }
   }
 }
+
+module.exports = dep
